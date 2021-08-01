@@ -1,10 +1,10 @@
 # binance-client
 
-Interactive web chat based on `concur-replica` (Haskell live view).
+Binance API client library for Haskell.
 
 ## Development
 
-Sometimes projects are using dependencies from private repositories. Docker and Nix can get access to private repositories through environment variables:
+Setup environment:
 
 ```shell
 vi ~/.profile
@@ -24,7 +24,7 @@ And then:
 ./nix/shell.sh
 
 # run tests in nix-shell
-stack test
+stack test --fast
 
 # develop in nix-shell
 vi .
