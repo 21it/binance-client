@@ -1,0 +1,6 @@
+cradle:
+  stack:
+    - path: "./src"
+      component: binance-client:lib
+    - path: "./test"
+      component: binance-client:test:binance-client-test
