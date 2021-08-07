@@ -21,6 +21,7 @@ import Control.Concurrent.STM.TChan as X
   )
 import Control.Concurrent.Thread.Delay as X (delay)
 import Control.Monad (forever)
+import Control.Monad.Trans.Except as X (throwE)
 import Data.Bifunctor as X (bimap, first, second)
 import Data.Coerce as X (coerce)
 import Data.Either.Extra as X (fromEither)
@@ -81,5 +82,6 @@ import Katip as X
     registerScribe,
     runKatipContextT,
   )
+import Network.HTTP.Client as X (HttpException (..))
 import Universum as X hiding ((^.), atomically, on, set)
 import UnliftIO as X (MonadUnliftIO (..), UnliftIO (..), withRunInIO)

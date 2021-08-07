@@ -1,22 +1,39 @@
 module BinanceClient.Data.Type
   ( LogFormat (..),
-    Message (..),
-    ChatEvent (..),
+    CurrencyCode (..),
+    CurrencyPair (..),
+    ExchangeRate (..),
+    Rpc (..),
+    Error (..),
   )
 where
 
+import BinanceClient.Data.Kind
 import BinanceClient.Import.External
 
 data LogFormat
   = Bracket
-  | JSON
-  deriving (Read)
+  | Json
+  deriving (Eq, Ord, Show, Read)
 
-newtype Message = Message Text
+newtype CurrencyCode (a :: CurrencyRelation)
+  = CurrencyCode Text
+  deriving newtype (Eq, Ord, Show, Read, IsString)
 
-data ChatEvent
-  = ChatSend Message
-  | ChatKeyDown Text
-  | ChatRefresh Message
-  | ChatTyping Message
+data CurrencyPair
+  = CurrencyPair
+      { currencyPairBase :: CurrencyCode 'Base,
+        currencyPairQuote :: CurrencyCode 'Quote
+      }
+  deriving (Eq, Ord, Show, Read)
 
+data ExchangeRate
+  = ExchangeRate CurrencyPair Rational
+  deriving (Eq, Ord, Show, Read)
+
+data Rpc (method :: Method)
+  = Rpc
+
+newtype Error
+  = ErrorHttp HttpException
+  deriving (Show)

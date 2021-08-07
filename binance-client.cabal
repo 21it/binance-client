@@ -25,10 +25,16 @@ source-repository head
 
 library
   exposed-modules:
+      BinanceClient
+      BinanceClient.Class.FromRpc
+      BinanceClient.Class.ToPathPiece
+      BinanceClient.Class.ToQueryString
       BinanceClient.Data.Env
+      BinanceClient.Data.Kind
       BinanceClient.Data.Type
       BinanceClient.Import
       BinanceClient.Import.External
+      BinanceClient.Rpc.Generic
   other-modules:
       Paths_binance_client
   hs-source-dirs:
@@ -41,6 +47,11 @@ library
       ScopedTypeVariables
       GeneralizedNewtypeDeriving
       DerivingStrategies
+      DataKinds
+      KindSignatures
+      FlexibleContexts
+      FlexibleInstances
+      ExistentialQuantification
   ghc-options: -Weverything -Werror -Wno-missing-exported-signatures -Wno-missing-import-lists -Wno-missed-specialisations -Wno-all-missed-specialisations -Wno-unsafe -Wno-safe -Wno-missing-local-signatures -Wno-monomorphism-restriction
   build-depends:
       async
@@ -52,6 +63,9 @@ library
     , esqueleto
     , extra
     , hspec
+    , http-client
+    , http-client-tls
+    , http-types
     , katip
     , persistent
     , persistent-postgresql
@@ -61,6 +75,7 @@ library
     , template-haskell
     , text
     , time
+    , transformers
     , unbounded-delays
     , universum
     , unliftio
@@ -70,6 +85,7 @@ test-suite binance-client-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      BinanceClientSpec
       Paths_binance_client
   hs-source-dirs:
       test
@@ -81,6 +97,11 @@ test-suite binance-client-test
       ScopedTypeVariables
       GeneralizedNewtypeDeriving
       DerivingStrategies
+      DataKinds
+      KindSignatures
+      FlexibleContexts
+      FlexibleInstances
+      ExistentialQuantification
   ghc-options: -Weverything -Werror -Wno-missing-exported-signatures -Wno-missing-import-lists -Wno-missed-specialisations -Wno-all-missed-specialisations -Wno-unsafe -Wno-safe -Wno-missing-local-signatures -Wno-monomorphism-restriction -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       async
@@ -93,6 +114,9 @@ test-suite binance-client-test
     , esqueleto
     , extra
     , hspec
+    , http-client
+    , http-client-tls
+    , http-types
     , katip
     , persistent
     , persistent-postgresql
@@ -102,6 +126,7 @@ test-suite binance-client-test
     , template-haskell
     , text
     , time
+    , transformers
     , unbounded-delays
     , universum
     , unliftio

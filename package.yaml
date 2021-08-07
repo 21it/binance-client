@@ -23,6 +23,10 @@ dependencies:
 # foundation
 - base >= 4.7 && < 5
 - universum
+# network
+- http-types
+- http-client
+- http-client-tls
 # time
 - time
 - chronos
@@ -45,6 +49,7 @@ dependencies:
 - template-haskell
 # other
 - unliftio
+- transformers
 - containers
 - envparse
 - extra
@@ -59,6 +64,11 @@ library:
   - ScopedTypeVariables
   - GeneralizedNewtypeDeriving
   - DerivingStrategies
+  - DataKinds
+  - KindSignatures
+  - FlexibleContexts
+  - FlexibleInstances
+  - ExistentialQuantification
   ghc-options:
   # For details on warnings: https://downloads.haskell.org/~ghc/master/users-guide/using-warnings.html
   # Enable all warnings with -Weverything, then disable the ones we don’t care about
@@ -87,6 +97,11 @@ tests:
     - ScopedTypeVariables
     - GeneralizedNewtypeDeriving
     - DerivingStrategies
+    - DataKinds
+    - KindSignatures
+    - FlexibleContexts
+    - FlexibleInstances
+    - ExistentialQuantification
     ghc-options:
     # For details on warnings: https://downloads.haskell.org/~ghc/master/users-guide/using-warnings.html
     # Enable all warnings with -Weverything, then disable the ones we don’t care about
