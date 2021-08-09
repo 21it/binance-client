@@ -1,7 +1,6 @@
 module BinanceClient.Rpc.Generic (pubGet) where
 
 import BinanceClient.Import
-import qualified Data.ByteString.Lazy as BS
 import qualified Data.Text as T
 import qualified Network.HTTP.Client as Http
 import qualified Network.HTTP.Client.TLS as Tls
@@ -34,5 +33,5 @@ pubGet rpc qs =
         Http.httpLbs
           (Http.setQueryString (toQueryString <$> qs) req)
           manager
-      let body = BS.toStrict $ Http.responseBody res
+      let body = Http.responseBody res
       pure $ Right body

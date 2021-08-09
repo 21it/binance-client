@@ -23,6 +23,7 @@ import Control.Concurrent.Thread.Delay as X (delay)
 import Control.Monad (forever)
 import Control.Monad.Trans.Except as X (throwE)
 import Data.Bifunctor as X (bimap, first, second)
+import Data.ByteString.Lazy as X (ByteString)
 import Data.Coerce as X (coerce)
 import Data.Either.Extra as X (fromEither)
 import Data.List as X (partition)
@@ -82,6 +83,11 @@ import Katip as X
     registerScribe,
     runKatipContextT,
   )
+import Money as X
+  ( ExchangeRate,
+    SomeExchangeRate,
+    mkSomeExchangeRate,
+  )
 import Network.HTTP.Client as X (HttpException (..))
-import Universum as X hiding ((^.), atomically, on, set)
+import Universum as X hiding (ByteString, (^.), atomically, on, set)
 import UnliftIO as X (MonadUnliftIO (..), UnliftIO (..), withRunInIO)

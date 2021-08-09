@@ -2,7 +2,6 @@ module BinanceClient.Data.Type
   ( LogFormat (..),
     CurrencyCode (..),
     CurrencyPair (..),
-    ExchangeRate (..),
     Rpc (..),
     Error (..),
   )
@@ -25,10 +24,6 @@ data CurrencyPair
       { currencyPairBase :: CurrencyCode 'Base,
         currencyPairQuote :: CurrencyCode 'Quote
       }
-  deriving (Eq, Ord, Show, Read)
-
-data ExchangeRate
-  = ExchangeRate CurrencyPair Rational
   deriving (Eq, Ord, Show, Read)
 
 data Rpc (method :: Method)

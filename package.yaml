@@ -48,6 +48,8 @@ dependencies:
 # th
 - template-haskell
 # other
+- safe-money
+- aeson
 - unliftio
 - transformers
 - containers

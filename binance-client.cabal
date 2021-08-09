@@ -54,7 +54,8 @@ library
       ExistentialQuantification
   ghc-options: -Weverything -Werror -Wno-missing-exported-signatures -Wno-missing-import-lists -Wno-missed-specialisations -Wno-all-missed-specialisations -Wno-unsafe -Wno-safe -Wno-missing-local-signatures -Wno-monomorphism-restriction
   build-depends:
-      async
+      aeson
+    , async
     , base >=4.7 && <5
     , bytestring
     , chronos
@@ -71,6 +72,7 @@ library
     , persistent-postgresql
     , persistent-template
     , retry
+    , safe-money
     , stm
     , template-haskell
     , text
@@ -104,7 +106,8 @@ test-suite binance-client-test
       ExistentialQuantification
   ghc-options: -Weverything -Werror -Wno-missing-exported-signatures -Wno-missing-import-lists -Wno-missed-specialisations -Wno-all-missed-specialisations -Wno-unsafe -Wno-safe -Wno-missing-local-signatures -Wno-monomorphism-restriction -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      async
+      aeson
+    , async
     , base >=4.7 && <5
     , binance-client
     , bytestring
@@ -122,6 +125,7 @@ test-suite binance-client-test
     , persistent-postgresql
     , persistent-template
     , retry
+    , safe-money
     , stm
     , template-haskell
     , text
