@@ -9,6 +9,7 @@ where
 
 import BinanceClient.Data.Kind
 import BinanceClient.Import.External
+import qualified Network.HTTP.Client as Web
 
 data LogFormat
   = Bracket
@@ -30,6 +31,7 @@ data Rpc (method :: Method)
   = Rpc
 
 data Error
-  = ErrorHttp HttpException
+  = ErrorWebException HttpException
+  | ErrorWebResponse (Web.Response ByteString)
   | ErrorFromRpc Text
   deriving (Show)
