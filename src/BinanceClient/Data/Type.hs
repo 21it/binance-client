@@ -29,6 +29,7 @@ data CurrencyPair
 data Rpc (method :: Method)
   = Rpc
 
-newtype Error
+data Error
   = ErrorHttp HttpException
+  | ErrorFromRpc Text
   deriving (Show)
