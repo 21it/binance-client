@@ -6,9 +6,10 @@ where
 
 import BinanceClient.Data.Type
 import BinanceClient.Import.External
+import qualified Data.ByteString as BS
 
 class ToQueryString a where
-  toQueryString :: a -> (ByteString, Maybe ByteString)
+  toQueryString :: a -> (BS.ByteString, Maybe BS.ByteString)
 
 data SomeQueryString
   = forall a. ToQueryString a => SomeQueryString a

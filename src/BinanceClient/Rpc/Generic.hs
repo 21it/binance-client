@@ -11,10 +11,10 @@ baseUrl :: Text
 baseUrl = "https://api.binance.com/api/v3"
 
 pubGet ::
-  ( ToPathPiece (Rpc (a :: Method)),
+  ( ToPathPiece (Rpc (method :: Method)),
     MonadIO m
   ) =>
-  Rpc (a :: Method) ->
+  Rpc (method :: Method) ->
   [SomeQueryString] ->
   ExceptT Error m ByteString
 pubGet rpc qs =
@@ -33,5 +33,4 @@ pubGet rpc qs =
         Http.httpLbs
           (Http.setQueryString (toQueryString <$> qs) req)
           manager
-      let body = Http.responseBody res
-      pure $ Right body
+      pure . Right $ Http.responseBody res
