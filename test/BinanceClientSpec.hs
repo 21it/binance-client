@@ -8,8 +8,10 @@ import BinanceClient.Import
 import Test.Hspec
 
 spec :: Spec
-spec =
-  it "avgPrice" $ do
+spec = do
+  it "AvgPrice succeeds" $ do
     x <- runExceptT . Binance.avgPrice $ CurrencyPair "ADA" "BTC"
-    print x
-    True `shouldBe` True
+    x `shouldSatisfy` isRight
+  it "AvgPrice fails" $ do
+    x <- runExceptT . Binance.avgPrice $ CurrencyPair "BTC" "BTC"
+    x `shouldSatisfy` isLeft
