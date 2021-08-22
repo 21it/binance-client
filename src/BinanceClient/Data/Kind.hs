@@ -6,6 +6,7 @@ where
 
 data Method
   = AvgPrice
+  | OrderTest
 
 data CurrencyRelation
   = Base

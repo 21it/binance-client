@@ -27,8 +27,8 @@ library
   exposed-modules:
       BinanceClient
       BinanceClient.Class.FromRpc
-      BinanceClient.Class.ToPathPiece
-      BinanceClient.Class.ToQueryString
+      BinanceClient.Class.ToPathPieces
+      BinanceClient.Class.ToQueryParam
       BinanceClient.Data.Env
       BinanceClient.Data.Kind
       BinanceClient.Data.Type
@@ -60,6 +60,7 @@ library
     , bytestring
     , chronos
     , containers
+    , cryptonite
     , envparse
     , esqueleto
     , extra
@@ -113,6 +114,7 @@ test-suite binance-client-test
     , bytestring
     , chronos
     , containers
+    , cryptonite
     , envparse
     , esqueleto
     , extra

@@ -29,6 +29,21 @@ instance FromRpc 'AvgPrice CurrencyPair SomeExchangeRate where
       parser = A.withObject "AvgPrice" (A..: "price")
       fstError = first $ ErrorFromRpc . T.pack
 
+instance FromRpc 'OrderTest CurrencyPair SomeExchangeRate where
+  fromRpc Rpc req raw = do
+    obj <- fstError $ A.eitherDecode raw
+    rawPrice <- fstError $ A.parseEither parser obj
+    price <- parseRational rawPrice
+    first ErrorFromRpc
+      . maybeToRight "AvgPrice WrongExchangeRate"
+      $ mkSomeExchangeRate
+        (coerce $ currencyPairBase req)
+        (coerce $ currencyPairQuote req)
+        price
+    where
+      parser = A.withObject "AvgPrice" (A..: "price")
+      fstError = first $ ErrorFromRpc . T.pack
+
 parseRational :: Text -> Either Error Rational
 parseRational raw =
   case rational $ strip raw of

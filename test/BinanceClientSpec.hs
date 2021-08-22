@@ -15,3 +15,6 @@ spec = do
   it "AvgPrice fails" $ do
     x <- runExceptT . Binance.avgPrice $ CurrencyPair "BTC" "BTC"
     x `shouldSatisfy` isLeft
+  it "OrderTest succeeds" $ do
+    x <- runExceptT . Binance.orderTest $ CurrencyPair "ADA" "BTC"
+    x `shouldSatisfy` isRight

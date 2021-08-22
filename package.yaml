@@ -27,6 +27,8 @@ dependencies:
 - http-types
 - http-client
 - http-client-tls
+# crypto
+- cryptonite
 # time
 - time
 - chronos

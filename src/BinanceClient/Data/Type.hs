@@ -4,12 +4,15 @@ module BinanceClient.Data.Type
     CurrencyPair (..),
     Rpc (..),
     Error (..),
+    PrvKey (..),
+    ApiKey (..),
   )
 where
 
 import BinanceClient.Data.Kind
 import BinanceClient.Import.External
 import qualified Network.HTTP.Client as Web
+import qualified Prelude
 
 data LogFormat
   = Bracket
@@ -35,3 +38,17 @@ data Error
   | ErrorWebResponse (Web.Response ByteString)
   | ErrorFromRpc Text
   deriving (Show)
+
+newtype PrvKey
+  = PrvKey Text
+  deriving (Eq, Ord, Read, IsString)
+
+instance Prelude.Show PrvKey where
+  show = const "SECRET"
+
+newtype ApiKey
+  = ApiKey Text
+  deriving (Eq, Ord, Read, IsString)
+
+instance Prelude.Show ApiKey where
+  show = const "SECRET"
